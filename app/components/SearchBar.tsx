@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import React, { useState } from "react";
+import { motion } from "motion/react";
 
 const SearchBar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-  useEffect(() => {
-    console.log(isExpanded);
-  }, [isExpanded]);
   return (
     <motion.div
-      className="inline-flex gap-[8px] rounded-[12px] p-2 bg-night hover:shadow-[0px_10px_20px_-5px_rgba(0,0,0,0.5)] shadow-[0px_10px_10px_-5px_rgba(0,0,0,0.25)]"
+      className="inline-flex items-center gap-[8px] rounded-full p-2 bg-night hover:shadow-[0px_10px_20px_-5px_rgba(0,0,0,0.5)] shadow-[0px_10px_10px_-5px_rgba(0,0,0,0.25)]"
       animate={{
         y: isExpanded ? 50 : 0,
       }}
@@ -18,13 +15,14 @@ const SearchBar = () => {
         damping: 30,
       }}
     >
-      <motion.div className="h-[30px] w-[30px] p-[7px] hover:bg-violet-900 transition-colors duration-300">
-        <img src="/images/brave-logo.svg" alt="Brave Logo" height="" />
+      <motion.div className="flex h-[32px] w-[32px] items-center justify-center rounded-full hover:bg-violet-900 transition-colors duration-300 cursor-pointer">
+        <img src="/images/brave-logo.svg" alt="Brave Logo" className="h-5 w-5 object-contain" />
       </motion.div>
       <motion.input
-        className="w-82 outline-0"
+        className="outline-0 bg-transparent text-gray-100 placeholder-gray-400"
         type="text"
         placeholder="Ask Brave Search"
+        aria-label="Search DSA problems"
         onFocus={() => setIsExpanded(true)}
         onBlur={() => setIsExpanded(false)}
         animate={{
@@ -33,12 +31,12 @@ const SearchBar = () => {
       />
 
       <motion.div
-        className="h-[30px] w-[30px] p-[7px] hover:bg-violet-900 transition-colors duration-300"
+        className="flex h-[32px] w-[32px] items-center justify-center rounded-full hover:bg-violet-900 transition-colors duration-300 cursor-pointer pointer-events-none"
         animate={{
           opacity: isExpanded ? 1 : 0,
         }}
       >
-        <img src="/images/search.svg" alt="Search Logo" />
+        <img src="/images/search.svg" alt="Search Logo" className="h-5 w-5 object-contain" />
       </motion.div>
     </motion.div>
   );
