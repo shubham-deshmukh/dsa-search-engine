@@ -27,6 +27,13 @@ const SearchBar = () => {
         aria-label="Search DSA problems"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Escape") {
+            setSearchQuery("");
+            setIsExpanded(false);
+            e.currentTarget.blur();
+          }
+        }}
         onFocus={() => setIsExpanded(true)}
         onBlur={() => {
           if (document.hasFocus()) {
