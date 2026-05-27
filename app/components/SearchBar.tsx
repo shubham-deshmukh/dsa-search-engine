@@ -3,6 +3,8 @@ import { motion } from "motion/react";
 
 const SearchBar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <motion.div
       className="inline-flex items-center gap-[8px] rounded-full p-2 bg-night hover:shadow-[0px_10px_20px_-5px_rgba(0,0,0,0.5)] shadow-[0px_10px_10px_-5px_rgba(0,0,0,0.25)]"
@@ -23,8 +25,14 @@ const SearchBar = () => {
         type="text"
         placeholder="Ask Brave Search"
         aria-label="Search DSA problems"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
         onFocus={() => setIsExpanded(true)}
-        onBlur={() => setIsExpanded(false)}
+        onBlur={() => {
+          if (document.hasFocus()) {
+            setIsExpanded(false);
+          }
+        }}
         animate={{
           width: isExpanded ? "450px" : "328px",
         }}
