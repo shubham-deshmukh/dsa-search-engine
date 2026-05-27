@@ -3,11 +3,21 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --background-image-platform: linear-gradient(156.52deg,
+      rgba(0, 0, 0, 0.05) 2.12%,
+      rgba(0, 0, 0, 0) 39%,
+      rgba(0, 0, 0, 0) 54.33%,
+      rgba(0, 0, 0, 0.15) 93.02%);
+    
+    --color-soft-zinc: rgba(217, 217, 222, 0.56);
+    --color-light-soft-zinc: rgba(217, 217, 222, 0.80);
+    --color-night: #1B1B1F;
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-white dark:bg-gray-800;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
