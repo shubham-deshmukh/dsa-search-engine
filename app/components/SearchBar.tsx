@@ -5,6 +5,26 @@ const SearchBar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
+  const handleSearch = async () => {
+    if (!searchQuery.trim()) return;
+
+    try {
+      const response = await fetch("http://localhost:8000/search", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query: searchQuery }),
+      });
+      const data = await response.json();
+      console.log("Search results:", data);
+      // TODO: Handle the search results here (e.g., save to state or route to a results page)
+      setIsExpanded(false);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
+  };
+
   return (
     <>
       <motion.div
@@ -41,6 +61,9 @@ const SearchBar = () => {
             setSearchQuery("");
             setIsExpanded(false);
             e.currentTarget.blur();
+          } else if (e.key === "Enter") {
+            handleSearch();
+            e.currentTarget.blur();
           }
         }}
         onFocus={() => setIsExpanded(true)}
@@ -55,7 +78,13 @@ const SearchBar = () => {
       />
 
       <motion.div
-        className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-violet-900 transition-colors duration-300 cursor-pointer pointer-events-none"
+        className={`flex h-8 w-8 items-center justify-center rounded-full hover:bg-violet-900 transition-colors duration-300 cursor-pointer ${
+          isExpanded ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+        onMouseDown={(e) => {
+          e.preventDefault(); // Prevents the input from losing focus before the search triggers
+          handleSearch();
+        }}
         animate={{
           opacity: isExpanded ? 1 : 0,
         }}
