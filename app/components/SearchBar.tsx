@@ -69,6 +69,7 @@ const SearchBar = () => {
         className="relative z-50 inline-flex items-center gap-2 rounded-full p-2 bg-night hover:shadow-[0px_10px_20px_-5px_rgba(0,0,0,0.5)] shadow-[0px_10px_10px_-5px_rgba(0,0,0,0.25)]"
       animate={{
         y: isExpanded ? 50 : 0,
+        width: isExpanded ? 580 : 420,
       }}
       transition={{
         type: "spring",
@@ -80,7 +81,7 @@ const SearchBar = () => {
         <img src="/images/brave-logo.svg" alt="Brave Logo" className="h-5 w-5 object-contain" />
       </motion.div>
       <motion.input
-        className="outline-0 bg-transparent text-gray-100 placeholder-gray-400"
+        className="outline-0 bg-transparent text-gray-100 placeholder-gray-400 flex-1 w-full"
         type="text"
         placeholder="Ask DSA Search"
         aria-label="Search DSA problems"
@@ -119,15 +120,12 @@ const SearchBar = () => {
             setIsExpanded(false);
           }
         }}
-        animate={{
-          width: isExpanded ? "450px" : "328px",
-        }}
       />
 
       {/* Clear Button */}
       {searchQuery && (
         <motion.div
-          className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-gray-700 transition-colors duration-300 cursor-pointer text-gray-400 hover:text-white"
+          className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-gray-700 transition-colors duration-300 cursor-pointer text-gray-400 hover:text-white"
           onMouseDown={(e) => {
             e.preventDefault(); // Prevents the input from losing focus
             setSearchQuery("");
@@ -137,7 +135,7 @@ const SearchBar = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-5 w-5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </motion.div>
