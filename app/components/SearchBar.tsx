@@ -170,7 +170,7 @@ const SearchBar = () => {
           className="absolute top-full mt-4 left-0 w-full bg-night border border-gray-700 rounded-2xl p-4 shadow-2xl text-left cursor-default"
           onMouseDown={(e) => e.preventDefault()}
         >
-          <div className="max-h-80 overflow-y-auto flex flex-col gap-2 text-gray-200">
+          <div className="max-h-80 overflow-y-auto pr-2 flex flex-col gap-3 text-gray-200 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-700 [&::-webkit-scrollbar-thumb]:rounded-full">
             {searchResults.error ? (
               <p className="text-center text-sm text-red-400 py-4">
                 {searchResults.error}
