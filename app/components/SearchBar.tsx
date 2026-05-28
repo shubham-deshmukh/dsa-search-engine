@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
+import SearchResultCard from "./SearchResultCard";
 
 const SearchBar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<any | null>(null);
 
   const handleSearch = async () => {
     if (!searchQuery.trim()) return;
@@ -18,8 +20,7 @@ const SearchBar = () => {
       });
       const data = await response.json();
       console.log("Search results:", data);
-      // TODO: Handle the search results here (e.g., save to state or route to a results page)
-      setIsExpanded(false);
+      setSearchResults(data);
     } catch (error) {
       console.error("Error fetching search results:", error);
     }
@@ -59,6 +60,7 @@ const SearchBar = () => {
         onKeyDown={(e) => {
           if (e.key === "Escape") {
             setSearchQuery("");
+            setSearchResults(null);
             setIsExpanded(false);
             e.currentTarget.blur();
           } else if (e.key === "Enter") {
@@ -91,6 +93,31 @@ const SearchBar = () => {
       >
         <img src="/images/search.svg" alt="Search Logo" className="h-5 w-5 object-contain" />
       </motion.div>
+
+      {/* JSON Results Dropdown */}
+      {isExpanded && searchResults && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="absolute top-full mt-4 left-0 w-full bg-night border border-gray-700 rounded-2xl p-4 shadow-2xl text-left cursor-default"
+        >
+          <div className="max-h-80 overflow-y-auto flex flex-col gap-2 text-gray-200">
+            {searchResults.error ? (
+              <p className="text-center text-sm text-red-400 py-4">
+                {searchResults.error}
+              </p>
+            ) : searchResults.results && searchResults.results.length > 0 ? (
+              searchResults.results.map((result: any, index: number) => (
+                <SearchResultCard key={index} result={result} index={index} />
+              ))
+            ) : (
+              <p className="text-center text-sm text-gray-400 py-4">
+                No results found.
+              </p>
+            )}
+          </div>
+        </motion.div>
+      )}
     </motion.div>
     </>
   );
