@@ -168,6 +168,7 @@ const SearchBar = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           className="absolute top-full mt-4 left-0 w-full bg-night border border-gray-700 rounded-2xl p-4 shadow-2xl text-left cursor-default"
+          onMouseDown={(e) => e.preventDefault()}
         >
           <div className="max-h-80 overflow-y-auto flex flex-col gap-2 text-gray-200">
             {searchResults.error ? (
