@@ -31,7 +31,7 @@ let docMagnitudes = [];
 
 async function loadProblemsAndBuildIndex() {
   const data = await fsPromises.readFile(
-    "../../dataset/preprocessed_all_problems.json",
+    "./dataset/preprocessed_all_problems.json",
     "utf-8"
   );
   problems = JSON.parse(data);
