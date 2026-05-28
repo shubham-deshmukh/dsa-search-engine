@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import SearchResultCard from "./SearchResultCard";
 
@@ -25,6 +25,19 @@ const SearchBar = () => {
       console.error("Error fetching search results:", error);
     }
   };
+
+  // Debounce effect for automatic search
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      if (searchQuery.trim()) {
+        handleSearch();
+      } else {
+        setSearchResults(null);
+      }
+    }, 500);
+
+    return () => clearTimeout(debounceTimer);
+  }, [searchQuery]);
 
   return (
     <>
