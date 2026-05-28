@@ -79,6 +79,25 @@ const SearchBar = () => {
         }}
       />
 
+      {/* Clear Button */}
+      {searchQuery && isExpanded && (
+        <motion.div
+          className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-gray-700 transition-colors duration-300 cursor-pointer text-gray-400 hover:text-white"
+          onMouseDown={(e) => {
+            e.preventDefault(); // Prevents the input from losing focus
+            setSearchQuery("");
+            setSearchResults(null);
+          }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </motion.div>
+      )}
+
       <motion.div
         className={`flex h-8 w-8 items-center justify-center rounded-full hover:bg-violet-900 transition-colors duration-300 cursor-pointer ${
           isExpanded ? "pointer-events-auto" : "pointer-events-none"
