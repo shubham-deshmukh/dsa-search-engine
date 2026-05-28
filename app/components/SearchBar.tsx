@@ -79,7 +79,7 @@ const SearchBar = () => {
       />
 
       {/* Clear Button */}
-      {searchQuery && isExpanded && (
+      {searchQuery && (
         <motion.div
           className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-gray-700 transition-colors duration-300 cursor-pointer text-gray-400 hover:text-white"
           onMouseDown={(e) => {
@@ -98,7 +98,7 @@ const SearchBar = () => {
       )}
 
       <motion.div
-        className={`flex h-8 w-8 items-center justify-center rounded-full hover:bg-violet-900 transition-colors duration-300 cursor-pointer ${
+        className={`flex h-8 items-center justify-center rounded-full hover:bg-violet-900 transition-colors duration-300 cursor-pointer overflow-hidden ${
           isExpanded ? "pointer-events-auto" : "pointer-events-none"
         }`}
         onMouseDown={(e) => {
@@ -107,9 +107,13 @@ const SearchBar = () => {
         }}
         animate={{
           opacity: isExpanded ? 1 : 0,
+          width: isExpanded ? 32 : 0,
+          marginLeft: isExpanded ? 0 : -8,
         }}
       >
-        <img src="/images/search.svg" alt="Search Logo" className="h-5 w-5 object-contain" />
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center">
+          <img src="/images/search.svg" alt="Search Logo" className="h-5 w-5 object-contain" />
+        </div>
       </motion.div>
 
       {/* JSON Results Dropdown */}
