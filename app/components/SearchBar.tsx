@@ -53,7 +53,7 @@ const SearchBar = () => {
       <motion.input
         className="outline-0 bg-transparent text-gray-100 placeholder-gray-400"
         type="text"
-        placeholder="Ask Brave Search"
+        placeholder="Ask DSA Search"
         aria-label="Search DSA problems"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
@@ -65,7 +65,6 @@ const SearchBar = () => {
             e.currentTarget.blur();
           } else if (e.key === "Enter") {
             handleSearch();
-            e.currentTarget.blur();
           }
         }}
         onFocus={() => setIsExpanded(true)}
