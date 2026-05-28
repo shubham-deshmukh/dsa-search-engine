@@ -6,6 +6,7 @@ const SearchBar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<any | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
 
   const handleSearch = async () => {
     if (!searchQuery.trim()) return;
@@ -25,6 +26,21 @@ const SearchBar = () => {
       console.error("Error fetching search results:", error);
     }
   };
+
+  // Reset selected index when results change
+  useEffect(() => {
+    setSelectedIndex(-1);
+  }, [searchResults]);
+
+  // Scroll to selected item when navigating with keyboard
+  useEffect(() => {
+    if (selectedIndex >= 0) {
+      const element = document.getElementById(`search-result-${selectedIndex}`);
+      if (element) {
+        element.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      }
+    }
+  }, [selectedIndex]);
 
   // Debounce effect for automatic search
   useEffect(() => {
@@ -76,8 +92,25 @@ const SearchBar = () => {
             setSearchResults(null);
             setIsExpanded(false);
             e.currentTarget.blur();
+          } else if (e.key === "ArrowDown") {
+            e.preventDefault();
+            if (searchResults?.results?.length) {
+              setSelectedIndex((prev) =>
+                prev < searchResults.results.length - 1 ? prev + 1 : prev
+              );
+            }
+          } else if (e.key === "ArrowUp") {
+            e.preventDefault();
+            setSelectedIndex((prev) => (prev > -1 ? prev - 1 : -1));
           } else if (e.key === "Enter") {
-            handleSearch();
+            e.preventDefault();
+            if (selectedIndex >= 0 && searchResults?.results?.[selectedIndex]) {
+              const result = searchResults.results[selectedIndex];
+              const url = result.url || result.link || "#";
+              window.open(url, "_blank", "noopener,noreferrer");
+            } else {
+              handleSearch();
+            }
           }
         }}
         onFocus={() => setIsExpanded(true)}
@@ -143,7 +176,12 @@ const SearchBar = () => {
               </p>
             ) : searchResults.results && searchResults.results.length > 0 ? (
               searchResults.results.map((result: any, index: number) => (
-                <SearchResultCard key={index} result={result} index={index} />
+                <SearchResultCard
+                  key={index}
+                  result={result}
+                  index={index}
+                  isSelected={selectedIndex === index}
+                />
               ))
             ) : (
               <p className="text-center text-sm text-gray-400 py-4">

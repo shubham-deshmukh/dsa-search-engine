@@ -14,19 +14,25 @@ interface SearchResult {
 interface SearchResultCardProps {
   result: SearchResult;
   index: number;
+  isSelected?: boolean;
 }
 
-const SearchResultCard: React.FC<SearchResultCardProps> = ({ result, index }) => {
+const SearchResultCard: React.FC<SearchResultCardProps> = ({ result, index, isSelected }) => {
   const href = result.url || result.link || "#";
   const title = result.title || result.name || `Search Result ${index + 1}`;
   const description = result.description || result.snippet;
 
   return (
     <a
+      id={`search-result-${index}`}
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="block p-3 rounded-xl bg-gray-800/40 hover:bg-gray-800 border border-transparent hover:border-violet-500/30 transition-all duration-200"
+      className={`block p-3 rounded-xl border transition-all duration-200 ${
+        isSelected
+          ? "bg-gray-800 border-violet-500/50"
+          : "bg-gray-800/40 hover:bg-gray-800 border-transparent hover:border-violet-500/30"
+      }`}
     >
       <h4 className="text-sm font-medium text-violet-300 mb-1">{title}</h4>
       {description && (
