@@ -9,8 +9,9 @@ import getSiteName from "./utils/getSiteName.js";
 const app = express();
 const PORT = process.env.PORT ||8000;
 
-const allowedOrigins = process.env.FRONTEND_URL
-  ? process.env.FRONTEND_URL.split(",").map((url) => url.trim())
+const corsUrls = process.env.CORS_ALLOWED_ORIGINS || process.env.FRONTEND_URL;
+const allowedOrigins = corsUrls
+  ? corsUrls.split(",").map((url) => url.trim())
   : "*";
 
 // Enable CORS for frontend requests

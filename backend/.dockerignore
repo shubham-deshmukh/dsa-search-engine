@@ -1,9 +1,5 @@
-.react-router
 node_modules
 npm-debug.log
-build
-node_modules
-README.md
 Dockerfile
 .dockerignore
 .env

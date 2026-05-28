@@ -1,0 +1,25 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Adjust to match your React Router serving port if different
+    depends_on:
+      - backend
+    environment:
+      # You can pass your backend's internal Docker URL here so the frontend can talk to it
+      - BACKEND_URL=http://backend:8000
+
+  backend:
+    build:
+      context: ./backend # Assumes you have a backend folder with its own Dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000" # Adjust to match your backend server port
+    env_file:
+      - ./backend/.env # Loads variables from your backend's .env file into the container
+    environment:
+      - NODE_ENV=production
+      # Variables defined here will OVERRIDE the ones in your .env file
+      # Example: DB_HOST=postgres_db
