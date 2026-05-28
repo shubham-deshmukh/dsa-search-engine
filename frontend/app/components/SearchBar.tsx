@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import SearchResultCard from "./SearchResultCard";
+import braveLogo from "/images/brave-logo.svg";
+import searchLogo from "/images/search.svg";
 
 const SearchBar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -78,7 +80,7 @@ const SearchBar = () => {
       }}
     >
       <motion.div className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-violet-900 transition-colors duration-300 cursor-pointer">
-        <img src="/images/brave-logo.svg" alt="Brave Logo" className="h-5 w-5 object-contain" />
+        <img src={braveLogo} alt="Brave Logo" className="h-5 w-5 object-contain" />
       </motion.div>
       <motion.input
         className="outline-0 bg-transparent text-gray-100 placeholder-gray-400 flex-1 w-full"
@@ -156,7 +158,7 @@ const SearchBar = () => {
         }}
       >
         <div className="flex h-8 w-8 shrink-0 items-center justify-center">
-          <img src="/images/search.svg" alt="Search Logo" className="h-5 w-5 object-contain" />
+        <img src={searchLogo} alt="Search Logo" className="h-5 w-5 object-contain" />
         </div>
       </motion.div>
 

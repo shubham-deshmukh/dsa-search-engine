@@ -1,5 +1,3 @@
-import React from "react";
-
 const LogoCard = ({name, url}: {name:string, url:string}) => {
     // const imageURL = "brave://favicon2/?size=64&pageUrl=" + url;
     const imageURL = "/images/" + name.toLocaleLowerCase() + ".png";

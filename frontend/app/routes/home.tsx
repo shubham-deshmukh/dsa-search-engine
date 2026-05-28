@@ -2,6 +2,7 @@ import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
 import LogoCard from "~/components/LogoCard";
 import SearchBar from "~/components/SearchBar";
+import ghostImage from "/images/ghost-2.jpg";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -36,7 +37,10 @@ const platforms: Platform[] = [
 
 export default function Home() {
   return (
-    <div className="h-screen w-screen flex-col bg-[url('./images/ghost-2.jpg')] bg-cover bg-center p-3">
+    <div 
+      className="h-screen w-screen flex-col bg-cover bg-center p-3"
+      style={{ backgroundImage: `url(${ghostImage})` }}
+    >
       {/* Sites */}
       <div className="flex w-full justify-center items-center mt-12.5">
         <div className="flex">
