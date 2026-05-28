@@ -1,10 +1,36 @@
+# OS generated files
 .DS_Store
-.env
-/node_modules/
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
 # React Router
 /.react-router/
 /build/
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.sw?
 
 # Logs during development
 issue.md
+# Python (Backend)
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.pytest_cache/
+
+# Node (Global catch-all just in case)
+node_modules/
+
+# Environment variables
+.env
+.env.*
+!.env.example
