@@ -23,7 +23,6 @@ const SearchBar = () => {
         body: JSON.stringify({ query: searchQuery }),
       });
       const data = await response.json();
-      console.log("Search results:", data);
       setSearchResults(data);
     } catch (error) {
       console.error("Error fetching search results:", error);
