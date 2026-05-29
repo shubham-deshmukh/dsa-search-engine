@@ -102,8 +102,6 @@
   <div id="resultsContainer"></div>
 
   <script>
-    const API_BASE_URL = 'http://localhost:8000';
-
     function handleKeyPress(event) {
       if (event.key === 'Enter') {
         performSearch();
@@ -122,7 +120,7 @@
       resultsContainer.innerHTML = '<p style="text-align: center;">Searching...</p>';
 
       try {
-        const response = await fetch(`${API_BASE_URL}/search`, {
+        const response = await fetch('/search', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
