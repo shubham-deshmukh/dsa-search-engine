@@ -17,8 +17,7 @@ ENV VITE_BACKEND_URL=$VITE_BACKEND_URL
 RUN npm run build
 
 FROM node:20-alpine
-COPY ./package.json package-lock.json /app/
-COPY --from=production-dependencies-env /app/node_modules /app/node_modules
-COPY --from=build-env /app/build /app/build
+RUN npm install -g serve
 WORKDIR /app
-CMD ["npm", "run", "start"]
+COPY --from=build-env /app/build/client ./build/client
+CMD ["serve", "-s", "build/client", "-l", "3000"]

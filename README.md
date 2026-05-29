@@ -26,20 +26,15 @@ The easiest way to run both the frontend and the backend is using Docker Compose
    cd "DSA based search engine v2"
    ```
 
-2. **Set up Environment Variables (Optional)**
-   If your backend requires specific environment variables, create a `.env` file in the `backend` directory:
-   ```bash
-   # backend/.env
-   PORT=8000
-   ```
-
-3. **Build and start the application**
+2. **Build and start the application**
+   (Environment variables like ports and URLs are automatically handled by `docker-compose.yml` for local development!)
+   
    Run the following command from the root of the project:
    ```bash
    docker-compose up --build
    ```
 
-4. **Access the application**
+3. **Access the application**
    - **Frontend UI:** Open your browser and go to http://localhost:3000
    - **Backend API:** The API is available at http://localhost:8000
 
