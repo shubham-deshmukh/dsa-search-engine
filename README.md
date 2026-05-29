@@ -1,5 +1,11 @@
 # DSA Based Search Engine v2
 
+**Live Demo:**
+- **Frontend UI:** [https://dsa-search-engine-v2.vercel.app/](https://dsa-search-engine-v2.vercel.app/)
+- **Backend API & UI:** [https://dsa-search-engine-v2.onrender.com](https://dsa-search-engine-v2.onrender.com)
+
+> **Note:** The live backend is hosted on Render's free tier, which goes to sleep after inactivity. It may take 50-60 seconds to spin up on the first request. In case of a delay, you can check the status by visiting the [Backend UI](https://dsa-search-engine-v2.onrender.com) directly.
+
 A full-stack search engine for Data Structures and Algorithms (DSA) problems. It allows users to query for programming problems and retrieves the most relevant results using Natural Language Processing (NLP) techniques, specifically Term Frequency-Inverse Document Frequency (TF-IDF) and Cosine Similarity.
 
 ## 🚀 Tech Stack
@@ -26,15 +32,20 @@ The easiest way to run both the frontend and the backend is using Docker Compose
    cd "DSA based search engine v2"
    ```
 
-2. **Build and start the application**
-   (Environment variables like ports and URLs are automatically handled by `docker-compose.yml` for local development!)
-   
+2. **Set up Environment Variables (Optional)**
+   If your backend requires specific environment variables, create a `.env` file in the `backend` directory:
+   ```bash
+   # backend/.env
+   PORT=8000
+   ```
+
+3. **Build and start the application**
    Run the following command from the root of the project:
    ```bash
    docker-compose up --build
    ```
 
-3. **Access the application**
+4. **Access the application**
    - **Frontend UI:** Open your browser and go to http://localhost:3000
    - **Backend API:** The API is available at http://localhost:8000
 
