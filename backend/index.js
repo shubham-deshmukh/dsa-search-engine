@@ -22,6 +22,17 @@ app.use(cors({
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+// Root health check endpoint
+app.get("/", (req, res) => {
+  res.json({
+    status: "healthy",
+    message: "DSA Search Engine API is running successfully.",
+    endpoints: {
+      search: "POST /search"
+    }
+  });
+});
+
 let problems = [];
 const { TfIdf } = pkg;
 let tfIdf = new TfIdf();
