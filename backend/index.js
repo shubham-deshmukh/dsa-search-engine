@@ -21,7 +21,6 @@ app.use(cors({
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-app.use(express.static("."));
 
 let problems = [];
 const { TfIdf } = pkg;
