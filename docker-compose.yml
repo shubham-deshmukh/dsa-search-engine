@@ -9,18 +9,19 @@ services:
       - backend
     environment:
       # You can pass your backend's internal Docker URL here so the frontend can talk to it
-      - BACKEND_URL=http://localhost:8000
-      - VITE_BACKEND_URL=http://localhost:8000 # This will be used in your React app to make API calls
+      - BACKEND_URL=http://localhost:8001
+      - VITE_BACKEND_URL=http://localhost:8001 # This will be used in your React app to make API calls
 
   backend:
+    container_name: dsa-search-engine-backend
     build:
       context: ./backend # Assumes you have a backend folder with its own Dockerfile
       dockerfile: Dockerfile
     ports:
-      - "8000:8000" # Adjust to match your backend server port
+      - "8001:8001" # Adjust to match your backend server port
     environment:
       - NODE_ENV=production
-      - PORT=8000
+      - PORT=8001
       - FRONTEND_URL=http://localhost:3000
       # Variables defined here will OVERRIDE the ones in your .env file
       # Example: DB_HOST=postgres_db
