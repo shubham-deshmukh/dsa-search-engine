@@ -1,10 +1,10 @@
 # DSA Based Search Engine v2
 
 **Live Demo:**
-- **Frontend UI:** [https://dsa-search-engine-v2.vercel.app/](https://dsa-search-engine-v2.vercel.app/)
-- **Backend API & UI:** [https://dsa-search-engine-v2.onrender.com](https://dsa-search-engine-v2.onrender.com)
+- **Frontend UI:** [https://dsa-search-engine.shubhamdeshmukh.dev/](https://dsa-search-engine.shubhamdeshmukh.dev/)
+- **Backend API & UI:** [https://api-dsa-search-engine.shubhamdeshmukh.dev](https://api-dsa-search-engine.shubhamdeshmukh.dev)
 
-> **Note:** The live backend is hosted on Render's free tier, which goes to sleep after inactivity. It may take 50-60 seconds to spin up on the first request. In case of a delay, you can check the status by visiting the [Backend UI](https://dsa-search-engine-v2.onrender.com) directly.
+> **Note:** The live backend is hosted on Render's free tier, which goes to sleep after inactivity. It may take 50-60 seconds to spin up on the first request. In case of a delay, you can check the status by visiting the [Backend UI](https://api-dsa-search-engine.shubhamdeshmukh.dev) directly.
 
 A full-stack search engine for Data Structures and Algorithms (DSA) problems. It allows users to query for programming problems and retrieves the most relevant results using Natural Language Processing (NLP) techniques, specifically Term Frequency-Inverse Document Frequency (TF-IDF) and Cosine Similarity.
 
