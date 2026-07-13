@@ -34,3 +34,6 @@ node_modules/
 .env
 .env.*
 !.env.example
+
+# Dataset
+backend/dataset/
