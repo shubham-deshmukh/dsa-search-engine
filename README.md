@@ -55,18 +55,18 @@ This project is structured as a decoupled client-server application. Below is a 
 
 ```mermaid
 graph TD
-    Client[User Browser]
-    Vercel[Vercel Frontend - https://dsa-search-engine.shubhamdeshmukh.dev]
-    Caddy[Caddy Reverse Proxy - proxy network]
-    Backend[Backend Express Container - dsa-search-engine-backend:8001]
-    Dataset[(Local JSON Dataset / In-Memory Index)]
+    Client["User Browser"]
+    Vercel["Vercel Frontend - https://dsa-search-engine.shubhamdeshmukh.dev"]
+    Caddy["Caddy Reverse Proxy - proxy network"]
+    Backend["Backend Express Container - dsa-search-engine-backend:8001"]
+    Dataset[("Local JSON Dataset / In-Memory Index")]
 
-    Client -->|1. Load UI & Assets| Vercel
-    Client -->|2. POST /search query| Caddy
-    Caddy -->|3. Forward Proxy (Port 8001)| Backend
-    Backend -->|4. Compute Cosine Similarity| Dataset
-    Dataset -->|5. Return Ranked Search Results| Backend
-    Backend -->|6. Return JSON response| Client
+    Client -->|"1. Load UI & Assets"| Vercel
+    Client -->|"2. POST /search query"| Caddy
+    Caddy -->|"3. Forward Proxy on Port 8001"| Backend
+    Backend -->|"4. Compute Cosine Similarity"| Dataset
+    Dataset -->|"5. Return Ranked Search Results"| Backend
+    Backend -->|"6. Return JSON response"| Client
 ```
 
 ### Main Components
