@@ -11,3 +11,9 @@ services:
     environment:
       - NODE_ENV=production
     restart: always
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
