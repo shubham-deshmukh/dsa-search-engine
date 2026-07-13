@@ -1,4 +1,5 @@
-import { removeStopwords } from 'stopword'
+import { removeStopwords } from 'stopword';
+import natural from 'natural';
 
 export default function preprocess(text) {
   if (!text || typeof text !== 'string') return "";
@@ -21,5 +22,10 @@ export default function preprocess(text) {
     .filter(Boolean); // Filter out any empty tokens
 
   // 5. Remove stop words
-  return removeStopwords(tokens).join(" ");
+  const cleanTokens = removeStopwords(tokens);
+
+  // 6. Stem each token using Porter Stemmer
+  const stemmedTokens = cleanTokens.map(token => natural.PorterStemmer.stem(token));
+
+  return stemmedTokens.join(" ");
 }
